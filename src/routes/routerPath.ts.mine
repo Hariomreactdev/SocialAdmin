@@ -1,0 +1,98 @@
+import { IconUsers, IconHome, IconCategory } from '@tabler/icons-react';
+
+export const ROUTES = {
+  ROOT: {
+    BASE: '/',
+    DASHBOARD: '/dashboard',
+    TITLES: {
+      VIEW: 'Home',
+    },
+    ICONS: {
+      LIST: IconHome,
+    },
+    PERMISSIONS: {
+      VIEW: 'view',
+    },
+  },
+
+  USERS: {
+    BASE: '/cms/users',
+    LIST: '/cms/users',
+    ADD: '/cms/users/add',
+    EDIT: '/cms/users/:id/edit',
+    VIEW: '/cms/users/:id',
+    MODULE: 'users',
+    TITLES: {
+      LIST: 'Users',
+      ADD: 'Add User',
+      EDIT: 'Edit User',
+      VIEW: 'View User',
+    },
+    ICONS: {
+      LIST: IconUsers,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'view',
+    },
+  },
+
+  CATEGORY: {
+    BASE: '/cms/categories',
+    LIST: '/cms/categories',
+    ADD: '/cms/categories/add',
+    EDIT: '/cms/categories/:id/edit',
+    VIEW: '/cms/categories/:id',
+    MODULE: 'categories',
+    TITLES: {
+      LIST: 'Categories',
+      ADD: 'Add Category',
+      EDIT: 'Edit Category',
+      VIEW: 'View Category',
+    },
+    ICONS: {
+      LIST: IconCategory,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'view',
+    },
+  },
+
+  ACCOUNT_SETTINGS: {
+    CHANGE_PASSWORD: '/cms/account-settings/change-password',
+    APP_SETTINGS: '/cms/account-settings/AppSettings',
+    MODULE: 'account-settings',
+    PERMISSIONS: {
+      CHANGE_PASSWORD: 'change-password',
+      APP_SETTINGS: 'App-Settings',
+    },
+    TITLES: {
+      LIST: 'App Settings',
+    },
+    ICONS: {
+      LIST: IconCategory,
+    },
+  },
+
+  ROLES: {
+    LIST: '/cms/roles-permissions',
+    ADD: '/cms/roles-permissions/add',
+    MODULE: 'users', // Or 'roles', depending on your backend
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+    },
+  },
+
+  AUTH: {
+    LOGIN: '/auth/login',
+    FORGOT_PASSWORD: '/auth/forgot-password',
+    RESET_PASSWORD: '/auth/reset-password',
+    NOT_FOUND: '/auth/404',
+  },
+};

@@ -1,0 +1,206 @@
+import React, { useState } from 'react';
+import {
+  Box,
+  Grid,
+  TextField,
+  Typography,
+  FormControlLabel,
+  Switch,
+  Button,
+  Paper,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Divider,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+ 
+const AppSettings = () => {
+  const [formData, setFormData] = useState({
+    supportEmail: '',
+    supportPhone: '',
+    appStoreLink: '',
+    playStoreLink: '',
+    defaultLanguage: '',
+    timeZone: '',
+    currency: '',
+    notifications: {
+      sms: false,
+      email: false,
+      push: false,
+      inApp: false,
+      news: false,
+      securityAlerts: false,
+    },
+    maintenanceMode: false,
+    blockedWords: '',
+  });
+ 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+    const { name, value } = e.target;
+    if (name?.startsWith('notifications.')) {
+      const key = name.split('.')[1];
+      setFormData((prev) => ({
+        ...prev,
+        notifications: { ...prev.notifications, [key]: value === true },
+      }));
+    } else if (name === 'maintenanceMode') {
+      setFormData((prev) => ({ ...prev, [name]: !prev.maintenanceMode }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name as string]: value }));
+    }
+  };
+ 
+  const handleSubmit = () => {
+    console.log('Saved Settings:', formData);
+  };
+ 
+  return (
+    <Box p={3}>
+      <Typography variant="h4" gutterBottom>
+        App Settings
+      </Typography>
+ 
+      {/* General Settings */}
+      <Paper sx={{ p: 3, mb: 4, backgroundColor: '#ffffff' }}>
+        <Typography variant="h6" gutterBottom>General</Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <TextField fullWidth label="Support Email" name="supportEmail" value={formData.supportEmail} onChange={handleChange} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField fullWidth label="Support Phone" name="supportPhone" value={formData.supportPhone} onChange={handleChange} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField fullWidth label="App Store Link" name="appStoreLink" value={formData.appStoreLink} onChange={handleChange} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField fullWidth label="Play Store Link" name="playStoreLink" value={formData.playStoreLink} onChange={handleChange} />
+          </Grid>
+        </Grid>
+      </Paper>
+ 
+      {/* System Configuration */}
+      <Paper sx={{ backgroundColor: '#ffffff', mb: 4 ,p: 3}}>
+       
+          <Typography variant="h6">System Configuration</Typography>
+     
+       
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={4}>
+              <FormControl fullWidth>
+                <InputLabel>Default Language</InputLabel>
+                <Select
+                  name="defaultLanguage"
+                  value={formData.defaultLanguage}
+                  label="Default Language"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="English">English</MenuItem>
+                  <MenuItem value="Spanish">Spanish</MenuItem>
+                  <MenuItem value="French">French</MenuItem>
+                  <MenuItem value="German">German</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FormControl fullWidth>
+                <InputLabel>Time Zone</InputLabel>
+                <Select
+                  name="timeZone"
+                  value={formData.timeZone}
+                  label="Time Zone"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="IST">IST (India Standard Time)</MenuItem>
+                  <MenuItem value="GMT">GMT (Greenwich Mean Time)</MenuItem>
+                  <MenuItem value="EST">EST (Eastern Standard Time)</MenuItem>
+                  <MenuItem value="PST">PST (Pacific Standard Time)</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FormControl fullWidth>
+                <InputLabel>Currency</InputLabel>
+                <Select
+                  name="currency"
+                  value={formData.currency}
+                  label="Currency"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="USD">USD</MenuItem>
+                  <MenuItem value="EUR">EUR</MenuItem>
+                  <MenuItem value="INR">INR</MenuItem>
+                  <MenuItem value="GBP">GBP</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+       
+      </Paper>
+ 
+      {/* Notification Settings */}
+      <Paper sx={{ p: 3, mb: 4, backgroundColor: '#ffffff' }}>
+        <Typography variant="h6" gutterBottom>Notification Settings</Typography>
+        <Grid container spacing={2}>
+          {[
+            { key: 'sms', label: 'SMS Notifications' },
+            { key: 'email', label: 'Email Notifications' },
+            { key: 'push', label: 'Push Notifications' },
+            { key: 'inApp', label: 'In-App Notifications' },
+          ].map((item) => (
+            <Grid item xs={12} sm={6} key={item.key}>
+              <Paper sx={{ p: 2 }}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={formData.notifications[item.key]}
+                      onChange={(e) => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          notifications: {
+                            ...prev.notifications,
+                            [item.key]: e.target.checked,
+                          },
+                        }));
+                      }}
+                    />
+                  }
+                  label={item.label}
+                />
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      </Paper>
+ 
+      {/* App Controls */}
+      <Paper sx={{ p: 3, mb: 4, backgroundColor: '#ffffff' }}>
+        <Typography variant="h6" gutterBottom>App Controls</Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={
+                <Switch checked={formData.maintenanceMode} onChange={handleChange} name="maintenanceMode" />
+              }
+              label="Maintenance Mode"
+            />
+          </Grid>
+        </Grid>
+      </Paper>
+ 
+      <Box mt={3}>
+        <Button variant="contained" onClick={handleSubmit}>
+          Save Settings
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+ 
+export default AppSettings;
+ 

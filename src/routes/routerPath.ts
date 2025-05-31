@@ -1,0 +1,225 @@
+import {
+  IconUsers,
+  IconHome,
+  IconCategory,
+  IconUserCog,
+  IconListCheck,
+  IconLockAccess,
+  IconSettings,
+  IconFileText
+} from '@tabler/icons-react';
+
+export const ROUTES = {
+  ROOT: {
+    BASE: '/',
+    DASHBOARD: '/dashboard',
+    TITLES: {
+      VIEW: 'Home',
+    },
+    ICONS: {
+      LIST: IconHome,
+    },
+    PERMISSIONS: {
+      VIEW: 'view',
+    },
+  },
+
+  USERS: {
+    BASE: '/cms/users',
+    LIST: '/cms/users',
+    ADD: '/cms/users/add',
+    EDIT: '/cms/users/:id/edit',
+    VIEW: '/cms/users/:id',
+    MODULE: 'users',
+    TITLES: {
+      LIST: 'App Users',
+      ADD: 'Add User',
+      EDIT: 'Edit User',
+      VIEW: 'View User',
+    },
+    ICONS: {
+      LIST: IconUsers,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'view',
+    },
+  },
+
+  ADMINS: {
+    BASE: '/cms/subadmins',
+    LIST: '/cms/subadmins',
+    ADD: '/cms/subadmins/add',
+    EDIT: '/cms/subadmins/:id/edit',
+    VIEW: '/cms/subadmins/:id',
+    MODULE: 'subadmins',
+    TITLES: {
+      LIST: 'Sub Admins',
+      ADD: 'Add Sub Admin',
+      EDIT: 'Edit Sub Admin',
+      VIEW: 'View Sub Admin',
+    },
+    ICONS: {
+      LIST: IconUsers,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'view',
+    },
+  },
+
+  CATEGORY: {
+    BASE: '/cms/categories',
+    LIST: '/cms/categories',
+    ADD: '/cms/categories/add',
+    EDIT: '/cms/categories/:id/edit',
+    VIEW: '/cms/categories/:id',
+    MODULE: 'categories',
+    TITLES: {
+      LIST: 'Categories',
+      ADD: 'Add Category',
+      EDIT: 'Edit Category',
+      VIEW: 'View Category',
+    },
+    ICONS: {
+      LIST: IconCategory,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'view',
+    },
+  },
+  CMS: {
+    BASE: '/cms/pages',
+    LIST: '/cms/pages',
+    ADD: '/cms/pages/add',
+    EDIT: '/cms/pages/:id/edit',
+    VIEW: '/cms/pages/:id',
+    MODULE: 'cms',
+    TITLES: {
+      LIST: 'CMS Pages',
+      ADD: 'Add Page',
+      EDIT: 'Edit Page',
+      VIEW: 'View Page',
+    },
+    ICONS: {
+      LIST: IconFileText ,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'view',
+    },
+  },
+  MODULES: {
+    BASE: '/cms/modules',
+    LIST: '/cms/modules',
+    ADD: '/cms/modules/add',
+    EDIT: '/cms/modules/:id/edit',
+    VIEW: '/cms/modules/:id',
+    MODULE: 'modules',
+    TITLES: {
+      LIST: 'Modules',
+      ADD: 'Add Module',
+      EDIT: 'Edit Module',
+      VIEW: 'View Module',
+    },
+    ICONS: {
+      LIST: IconListCheck,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'read',
+      DELETE: 'delete',
+      APP_SETTINGS: 'App-Settings',
+    },
+    // TITLES: {
+    //   LIST: 'App Settings',
+    // },
+    // ICONS: {
+    //   LIST: IconCategory,
+    // },
+  },
+
+  PERMISSIONS: {
+    BASE: '/cms/permissions',
+    LIST: '/cms/permissions',
+    ADD: '/cms/permissions/add',
+    EDIT: '/cms/permissions/:id/edit',
+    VIEW: '/cms/permissions/:id',
+    MODULE: 'permissions',
+    TITLES: {
+      LIST: 'Permissions',
+      ADD: 'Add Permissions',
+      EDIT: 'Edit Permissions',
+      VIEW: 'View Permissions',
+    },
+    ICONS: {
+      LIST: IconLockAccess,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'read',
+      DELETE: 'delete',
+    },
+  },
+
+  ROLES: {
+    BASE: '/cms/roles',
+    LIST: '/cms/roles',
+    ADD: '/cms/roles/add',
+    EDIT: '/cms/roles/:id/edit',
+    VIEW: '/cms/roles/:id',
+    MODULE: 'roles',
+    TITLES: {
+      LIST: 'Role & Permissions',
+      ADD: 'Add Role & Permissions',
+      EDIT: 'Edit Role & Permissions',
+    },
+    ICONS: {
+      LIST: IconUserCog,
+    },
+    PERMISSIONS: {
+      LIST: 'list',
+      CREATE: 'create',
+      UPDATE: 'update',
+      VIEW: 'read',
+      DELETE: 'delete',
+    },
+  },
+
+  ACCOUNT_SETTINGS: {
+    CHANGE_PASSWORD: '/cms/account-settings/change-password',
+    APP_SETTINGS: '/cms/account-settings/app-settings',
+    MODULE: 'account-settings',
+    PERMISSIONS: {
+      CHANGE_PASSWORD: 'change-password',
+      APP_SETTINGS: 'App-Settings',
+    },
+    TITLES: {
+      ACCOUNT_SETTINGS: 'Account Settings',
+      APP_SETTINGS: 'App Settings',
+    },
+    ICONS: {
+      LIST: IconSettings,
+    },
+  },
+
+  AUTH: {
+    LOGIN: '/auth/login',
+    FORGOT_PASSWORD: '/auth/forgot-password',
+    RESET_PASSWORD: '/auth/reset-password',
+    NOT_FOUND: '/auth/404',
+  },
+};

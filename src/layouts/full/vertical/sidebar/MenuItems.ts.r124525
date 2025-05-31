@@ -1,0 +1,40 @@
+import { uniqueId } from 'lodash';
+import { ROUTES } from '@/routes/routerPath';
+
+interface MenuitemsType {
+  [x: string]: any;
+  id?: string;
+  navlabel?: boolean;
+  subheader?: string;
+  title?: string;
+  icon?: any;
+  href?: string;
+  children?: MenuitemsType[];
+  chip?: string;
+  chipColor?: string;
+  variant?: string;
+  external?: boolean;
+}
+
+const Menuitems: MenuitemsType[] = [
+  {
+    id: uniqueId(),
+    title: `${ROUTES.ROOT.TITLES.VIEW}`,
+    icon: ROUTES.ROOT.ICONS.LIST,
+    href: `${ROUTES.ROOT.BASE}`,
+  },
+  {
+    id: uniqueId(),
+    title: `${ROUTES.CATEGORY.TITLES.LIST}`,
+    icon: ROUTES.CATEGORY.ICONS.LIST,
+    href: `${ROUTES.CATEGORY.LIST}`,
+  },
+  {
+    id: uniqueId(),
+    title: `${ROUTES.USERS.TITLES.LIST}`,
+    icon: ROUTES.USERS.ICONS.LIST,
+    href: `${ROUTES.USERS.LIST}`,
+  },
+];
+
+export default Menuitems;
